@@ -1,44 +1,35 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
-import { BrowserRouter as Route, Routes } from 'react-router-dom'
-import { Router } from 'react-router-dom'
-//import { SwitchBaseProps } from '@material-ui/core/internal/SwitchBase'
-import logo from './logo.svg'
+//import { useState, useEffect, useReducer } from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css'
+//import { Link } from 'react-router-dom'
+import Navigation from './components/nav'
 import About from './About'
 import Footer from './Footer'
-//import DisplayEmojis from './DisplayEmojiName'
+
+const Home = () => <Home></Home>
 
 function App() {
+  //const [enabled, toggle] = useReducer((x) => !x, false);
+  //useEffect dokończ TO !!!
+
   return (
-    <>
-      <Routes>
-        <Route path="/">
-          element{}
-          render = {(props) => <></>}
-          <Routes>
-            <Router path="about" element={About}></Router>
-          </Routes>
-        </Route>
-      </Routes>
+    <Router>
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+        <div className="App-header">
+          <Home></Home>
+          <Navigation></Navigation>
+          <About></About>
           <Footer></Footer>
-        </header>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/nav" element={<Navigation />}></Route>
+            <Route path="/about" element={<About />}></Route>
+            <Route path="/footer" element={<Footer />}></Route>
+          </Routes>
+        </div>
       </div>
-    </>
+    </Router>
   )
 }
 
